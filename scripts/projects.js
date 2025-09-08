@@ -1,6 +1,5 @@
 // Projects Page JavaScript
 
-// Sample game data - you can modify this array to add/remove games
 const gameData = [
     {
         id: '2048',
@@ -27,15 +26,15 @@ const gameData = [
         category: 'puzzle'
     },
     {
-        id: 'neon-racer',
-        title: 'Neon Racer',
-        description: 'Race through cyberpunk cities in this high-speed racing game with neon-lit tracks and futuristic cars.',
-        image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400',
+        id: 'slope',
+        title: 'Slope',
+        description: 'Slopein Around Slope Yah Woo!',
+        image: '../files/slope/slope4.jpeg',
         tags: ['racing', 'arcade'],
         rating: 4.3,
         players: 3420,
-        src: 'games/neon-racer/index.html',
-        difficulty: 2,
+        src: '../files/slope/',
+        difficulty: 999,
         category: 'arcade'
     }
 ];
