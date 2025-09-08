@@ -1,5 +1,34 @@
 // Projects Page JavaScript
 
+// Fallback GameUtils implementation
+const GameUtils = {
+    generateStars(rating) {
+        const fullStars = Math.floor(rating);
+        const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+        let stars = '';
+        for (let i = 0; i < fullStars; i++) {
+            stars += '<i class="fas fa-star"></i>';
+        }
+        if (halfStar) {
+            stars += '<i class="fas fa-star-half-alt"></i>';
+        }
+        for (let i = fullStars + halfStar; i < 5; i++) {
+            stars += '<i class="far fa-star"></i>';
+        }
+        return stars;
+    },
+    formatPlayerCount(count) {
+        if (count >= 1000) {
+            return `${(count / 1000).toFixed(1)}K`;
+        }
+        return count.toString();
+    },
+    playGame(game) {
+        // Basic implementation: redirect to game URL
+        window.location.href = game.src;
+    }
+};
+
 const gameData = [
     {
         id: '2048',
@@ -59,7 +88,6 @@ class ProjectsManager {
     }
 
     setupEventListeners() {
-        // Search functionality
         const searchInput = document.getElementById('searchInput');
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
@@ -67,7 +95,6 @@ class ProjectsManager {
                 this.filterGames();
             });
 
-            // Clear search on escape
             searchInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     searchInput.value = '';
@@ -77,13 +104,10 @@ class ProjectsManager {
             });
         }
 
-        // Filter buttons
         const filterButtons = document.querySelectorAll('.filter-btn');
         filterButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                // Remove active class from all buttons
                 filterButtons.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
                 e.target.classList.add('active');
                 
                 this.currentFilter = e.target.getAttribute('data-filter');
@@ -91,7 +115,6 @@ class ProjectsManager {
             });
         });
 
-        // Load more button
         const loadMoreBtn = document.getElementById('loadMoreBtn');
         if (loadMoreBtn) {
             loadMoreBtn.addEventListener('click', () => {
@@ -99,7 +122,6 @@ class ProjectsManager {
             });
         }
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'F3' || (e.ctrlKey && e.key === 'f')) {
                 e.preventDefault();
@@ -109,126 +131,135 @@ class ProjectsManager {
     }
 
     filterGames() {
-        this.filteredGames = this.allGames.filter(game => {
-            const matchesFilter = this.currentFilter === 'all' || 
-                                game.tags.includes(this.currentFilter) ||
-                                game.category === this.currentFilter;
-            const matchesSearch = this.searchTerm === '' || 
-                                game.title.toLowerCase().includes(this.searchTerm) ||
-                                game.description.toLowerCase().includes(this.searchTerm) ||
-                                game.tags.some(tag => tag.toLowerCase().includes(this.searchTerm));
-            
-            return matchesFilter && matchesSearch;
-        });
+        try {
+            this.filteredGames = this.allGames.filter(game => {
+                const matchesFilter = this.currentFilter === 'all' || 
+                                    game.tags.includes(this.currentFilter) ||
+                                    game.category === this.currentFilter;
+                const matchesSearch = this.searchTerm === '' || 
+                                    game.title.toLowerCase().includes(this.searchTerm) ||
+                                    game.description.toLowerCase().includes(this.searchTerm) ||
+                                    game.tags.some(tag => tag.toLowerCase().includes(this.searchTerm));
+                
+                return matchesFilter && matchesSearch;
+            });
 
-        this.displayedGames = 0;
-        this.clearGamesGrid();
-        this.loadInitialGames();
-        this.updateLoadMoreButton();
+            this.displayedGames = 0;
+            this.clearGamesGrid();
+            this.loadInitialGames();
+            this.updateLoadMoreButton();
 
-        // Show empty state if no games found
-        if (this.filteredGames.length === 0) {
-            this.showEmptyState();
+            if (this.filteredGames.length === 0) {
+                this.showEmptyState();
+            }
+        } catch (error) {
+            console.error('Error filtering games:', error);
         }
     }
 
     loadInitialGames() {
-        this.loadMoreGames();
+        try {
+            this.loadMoreGames();
+        } catch (error) {
+            console.error('Error loading initial games:', error);
+        }
     }
 
     loadMoreGames() {
-        const gamesToLoad = this.filteredGames.slice(
-            this.displayedGames, 
-            this.displayedGames + this.gamesPerLoad
-        );
+        try {
+            const gamesToLoad = this.filteredGames.slice(
+                this.displayedGames, 
+                this.displayedGames + this.gamesPerLoad
+            );
 
-        gamesToLoad.forEach((game, index) => {
-            setTimeout(() => {
-                this.createGameCard(game);
-            }, index * 100); // Stagger the loading animation
-        });
+            gamesToLoad.forEach((game, index) => {
+                setTimeout(() => {
+                    this.createGameCard(game);
+                }, index * 100);
+            });
 
-        this.displayedGames += gamesToLoad.length;
-        this.updateLoadMoreButton();
+            this.displayedGames += gamesToLoad.length;
+            this.updateLoadMoreButton();
+        } catch (error) {
+            console.error('Error loading more games:', error);
+        }
     }
 
     createGameCard(game) {
-        const grid = document.getElementById('projectsGrid');
-        if (!grid) return;
-
-        const card = document.createElement('div');
-        card.className = 'project-card';
-        card.setAttribute('data-game-id', game.id);
-        
-        // Get category icon
-        const categoryIcon = this.getCategoryIcon(game.category);
-        
-        // Generate difficulty dots
-        const difficultyDots = this.generateDifficultyDots(game.difficulty);
-        
-        // Check if game is favorited
-        const isFavorited = this.favorites.includes(game.id);
-        
-        card.innerHTML = `
-            <div class="project-image">
-                <img src="${game.image}" alt="${game.title}" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400'">
-                <div class="play-icon">
-                    <i class="fas fa-play"></i>
-                </div>
-                <div class="category-icon">
-                    <i class="fas ${categoryIcon}"></i>
-                </div>
-                <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" data-game-id="${game.id}">
-                    <i class="fas fa-heart"></i>
-                </button>
-                <div class="difficulty-indicator">
-                    ${difficultyDots}
-                </div>
-            </div>
-            <div class="project-content">
-                <h3 class="project-title">${game.title}</h3>
-                <p class="project-description">${game.description}</p>
-                <div class="project-tags">
-                    ${game.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
-                </div>
-                <div class="project-meta">
-                    <div class="project-rating">
-                        <span class="stars">${GameUtils.generateStars(game.rating)}</span>
-                        <span>${game.rating}</span>
-                    </div>
-                    <div class="project-players">
-                        <i class="fas fa-users"></i>
-                        <span>${GameUtils.formatPlayerCount(game.players)}</span>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        // Add click event to play game (except on favorite button)
-        card.addEventListener('click', (e) => {
-            if (!e.target.closest('.favorite-btn')) {
-                this.playGame(game);
+        try {
+            const grid = document.getElementById('projectsGrid');
+            if (!grid) {
+                console.error('Projects grid element not found');
+                return;
             }
-        });
 
-        // Add favorite button functionality
-        const favoriteBtn = card.querySelector('.favorite-btn');
-        favoriteBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            this.toggleFavorite(game.id, favoriteBtn);
-        });
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.setAttribute('data-game-id', game.id);
+            
+            const categoryIcon = this.getCategoryIcon(game.category);
+            const difficultyDots = this.generateDifficultyDots(game.difficulty);
+            const isFavorited = this.favorites.includes(game.id);
+            
+            card.innerHTML = `
+                <div class="project-image">
+                    <img src="${game.image}" alt="${game.title}" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400'">
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="category-icon">
+                        <i class="fas ${categoryIcon}"></i>
+                    </div>
+                    <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" data-game-id="${game.id}">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                    <div class="difficulty-indicator">
+                        ${difficultyDots}
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">${game.title}</h3>
+                    <p class="project-description">${game.description}</p>
+                    <div class="project-tags">
+                        ${game.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+                    </div>
+                    <div class="project-meta">
+                        <div class="project-rating">
+                            <span class="stars">${GameUtils.generateStars(game.rating)}</span>
+                            <span>${game.rating}</span>
+                        </div>
+                        <div class="project-players">
+                            <i class="fas fa-users"></i>
+                            <span>${GameUtils.formatPlayerCount(game.players)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
 
-        // Add hover effects
-        card.addEventListener('mouseenter', () => {
-            this.preloadGame(game);
-        });
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('.favorite-btn')) {
+                    this.playGame(game);
+                }
+            });
 
-        grid.appendChild(card);
+            const favoriteBtn = card.querySelector('.favorite-btn');
+            favoriteBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleFavorite(game.id, favoriteBtn);
+            });
 
-        // Add entrance animation
-        setTimeout(() => {
-            card.classList.add('fade-in-up');
-        }, 50);
+            card.addEventListener('mouseenter', () => {
+                this.preloadGame(game);
+            });
+
+            grid.appendChild(card);
+
+            setTimeout(() => {
+                card.classList.add('fade-in-up');
+            }, 50);
+        } catch (error) {
+            console.error('Error creating game card:', error);
+        }
     }
 
     getCategoryIcon(category) {
@@ -255,107 +286,132 @@ class ProjectsManager {
     }
 
     toggleFavorite(gameId, button) {
-        const index = this.favorites.indexOf(gameId);
-        if (index > -1) {
-            this.favorites.splice(index, 1);
-            button.classList.remove('favorited');
-        } else {
-            this.favorites.push(gameId);
-            button.classList.add('favorited');
+        try {
+            const index = this.favorites.indexOf(gameId);
+            if (index > -1) {
+                this.favorites.splice(index, 1);
+                button.classList.remove('favorited');
+            } else {
+                this.favorites.push(gameId);
+                button.classList.add('favorited');
+            }
+            this.saveFavorites();
+            
+            button.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+            }, 200);
+        } catch (error) {
+            console.error('Error toggling favorite:', error);
         }
-        this.saveFavorites();
-        
-        // Add animation
-        button.style.transform = 'scale(1.3)';
-        setTimeout(() => {
-            button.style.transform = 'scale(1)';
-        }, 200);
     }
 
     loadFavorites() {
-        return JSON.parse(localStorage.getItem('scuha_favorites') || '[]');
+        try {
+            return JSON.parse(localStorage.getItem('scuha_favorites') || '[]');
+        } catch (error) {
+            console.error('Error loading favorites:', error);
+            return [];
+        }
     }
 
     saveFavorites() {
-        localStorage.setItem('scuha_favorites', JSON.stringify(this.favorites));
+        try {
+            localStorage.setItem('scuha_favorites', JSON.stringify(this.favorites));
+        } catch (error) {
+            console.error('Error saving favorites:', error);
+        }
     }
 
     preloadGame(game) {
-        // Preload game assets for faster loading
-        const link = document.createElement('link');
-        link.rel = 'prefetch';
-        link.href = game.src;
-        document.head.appendChild(link);
+        try {
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = game.src;
+            document.head.appendChild(link);
+        } catch (error) {
+            console.error('Error preloading game:', error);
+        }
     }
 
     playGame(game) {
-        // Add click animation
-        const card = document.querySelector(`[data-game-id="${game.id}"]`);
-        if (card) {
-            card.style.transform = 'scale(0.95)';
-            card.style.opacity = '0.8';
-            
-            // Save recently played games
-            this.addToRecentlyPlayed(game.id);
-            
-            setTimeout(() => {
-                GameUtils.playGame(game);
-            }, 150);
+        try {
+            const card = document.querySelector(`[data-game-id="${game.id}"]`);
+            if (card) {
+                card.style.transform = 'scale(0.95)';
+                card.style.opacity = '0.8';
+                
+                this.addToRecentlyPlayed(game.id);
+                
+                setTimeout(() => {
+                    GameUtils.playGame(game);
+                }, 150);
+            }
+        } catch (error) {
+            console.error('Error playing game:', error);
         }
     }
 
     addToRecentlyPlayed(gameId) {
-        let recentGames = JSON.parse(localStorage.getItem('scuha_recent_games') || '[]');
-        
-        // Remove if already exists
-        recentGames = recentGames.filter(id => id !== gameId);
-        
-        // Add to beginning
-        recentGames.unshift(gameId);
-        
-        // Keep only last 10
-        recentGames = recentGames.slice(0, 10);
-        
-        localStorage.setItem('scuha_recent_games', JSON.stringify(recentGames));
+        try {
+            let recentGames = JSON.parse(localStorage.getItem('scuha_recent_games') || '[]');
+            recentGames = recentGames.filter(id => id !== gameId);
+            recentGames.unshift(gameId);
+            recentGames = recentGames.slice(0, 10);
+            localStorage.setItem('scuha_recent_games', JSON.stringify(recentGames));
+        } catch (error) {
+            console.error('Error adding to recently played:', error);
+        }
     }
 
     clearGamesGrid() {
-        const grid = document.getElementById('projectsGrid');
-        if (grid) {
-            grid.innerHTML = '';
+        try {
+            const grid = document.getElementById('projectsGrid');
+            if (grid) {
+                grid.innerHTML = '';
+            }
+        } catch (error) {
+            console.error('Error clearing games grid:', error);
         }
     }
 
     updateLoadMoreButton() {
-        const loadMoreBtn = document.getElementById('loadMoreBtn');
-        if (loadMoreBtn) {
-            const remainingGames = this.filteredGames.length - this.displayedGames;
-            if (remainingGames <= 0) {
-                loadMoreBtn.style.display = 'none';
-            } else {
-                loadMoreBtn.style.display = 'inline-flex';
-                loadMoreBtn.innerHTML = `
-                    <i class="fas fa-plus"></i> 
-                    Load ${Math.min(remainingGames, this.gamesPerLoad)} More Games
-                `;
+        try {
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            if (loadMoreBtn) {
+                const remainingGames = this.filteredGames.length - this.displayedGames;
+                if (remainingGames <= 0) {
+                    loadMoreBtn.style.display = 'none';
+                } else {
+                    loadMoreBtn.style.display = 'inline-flex';
+                    loadMoreBtn.innerHTML = `
+                        <i class="fas fa-plus"></i> 
+                        Load ${Math.min(remainingGames, this.gamesPerLoad)} More Games
+                    `;
+                }
             }
+        } catch (error) {
+            console.error('Error updating load more button:', error);
         }
     }
 
     showEmptyState() {
-        const grid = document.getElementById('projectsGrid');
-        if (grid) {
-            grid.innerHTML = `
-                <div class="empty-state" style="grid-column: 1 / -1;">
-                    <i class="fas fa-search"></i>
-                    <h3>No Games Found</h3>
-                    <p>Try adjusting your search terms or filters</p>
-                </div>
-            `;
+        try {
+            const grid = document.getElementById('projectsGrid');
+            if (grid) {
+                grid.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <i class="fas fa-search"></i>
+                        <h3>No Games Found</h3>
+                        <p>Try adjusting your search terms or filters</p>
+                    </div>
+                `;
+            }
+        } catch (error) {
+            console.error('Error showing empty state:', error);
         }
     }
 
-    // Public methods for external access
     getGameById(id) {
         return this.allGames.find(game => game.id === id);
     }
@@ -365,24 +421,35 @@ class ProjectsManager {
     }
 
     getRecentlyPlayed() {
-        const recentIds = JSON.parse(localStorage.getItem('scuha_recent_games') || '[]');
-        return recentIds.map(id => this.getGameById(id)).filter(Boolean);
+        try {
+            const recentIds = JSON.parse(localStorage.getItem('scuha_recent_games') || '[]');
+            return recentIds.map(id => this.getGameById(id)).filter(Boolean);
+        } catch (error) {
+            console.error('Error getting recently played games:', error);
+            return [];
+        }
     }
 
     searchGames(query) {
-        this.searchTerm = query.toLowerCase();
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.value = query;
+        try {
+            this.searchTerm = query.toLowerCase();
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.value = query;
+            }
+            this.filterGames();
+        } catch (error) {
+            console.error('Error searching games:', error);
         }
-        this.filterGames();
     }
 }
 
-// Initialize projects manager when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    window.projectsManager = new ProjectsManager();
+    try {
+        window.projectsManager = new ProjectsManager();
+    } catch (error) {
+        console.error('Error initializing ProjectsManager:', error);
+    }
 });
 
-// Export for use in other scripts
 window.ProjectsManager = ProjectsManager;
