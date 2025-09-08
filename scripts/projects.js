@@ -34,7 +34,7 @@ const gameData = [
         rating: 4.3,
         players: 3420,
         src: '../files/slope/',
-        difficulty: 999,
+        difficulty: 3,
         category: 'arcade'
     }
 ];

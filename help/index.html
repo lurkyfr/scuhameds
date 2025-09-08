@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - SCUHA Gaming Hub</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/gamestyle.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>SCUHA</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../projects/" class="nav-link active">
+                        <i class="fas fa-gamepad"></i> Projects
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../chatbot/" class="nav-link">
+                        <i class="fas fa-robot"></i> Chatbot
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../settings/" class="nav-link">
+                        <i class="fas fa-cog"></i> Settings
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../help/" class="nav-link">
+                        <i class="fas fa-question-circle"></i> Help
+                    </a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="projects-header">
+            <div class="container">
+                <h1 class="page-title">Game Projects</h1>
+                <p class="page-subtitle">Discover and play amazing games from our collection</p>
+                
+                <div class="filter-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search games..." id="searchInput">
+                    </div>
+                    <div class="filter-tags">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="action">Action</button>
+                        <button class="filter-btn" data-filter="puzzle">Puzzle</button>
+                        <button class="filter-btn" data-filter="arcade">Arcade</button>
+                        <button class="filter-btn" data-filter="strategy">Strategy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-grid-section">
+            <div class="container">
+                <h1>Help Information</h1>
+                <h3>Choose Your Character!</h3>
+                <div class="hero-buttons">
+                    <a href="projects.html" class="btn btn-primary">
+                        <i class="fas fa-question-circle"></i> Contact Information
+                    </a>
+                    <a href="help.html" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i> 
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SCUHA Gaming Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/projects.js"></script>
+</body>
+</html>
