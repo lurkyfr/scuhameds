@@ -207,7 +207,7 @@ class ProjectsManager {
         try {
             const grid = document.getElementById('projectsGrid');
             if (!grid) {
-                console.error('Projects grid element not found');
+                print('Projects grid element not found');
                 return;
             }
 
@@ -473,7 +473,42 @@ class ProjectsManager {
             this.filterGames();
         } catch (error) {
             console.error('Error searching games:', error);
-        }
+        }    {
+        id: '2048',
+        title: '2048',
+        description: 'Merge blocks to accumulate the highest number block',
+        image: '../files/2048/thumb.png',
+        tags: ['action', 'adventure'],
+        rating: 4.5,
+        players: 2340,
+        src: '../files/2048/index.html',
+        difficulty: 3,
+        category: 'action'
+    },
+    {
+        id: '1v1.space',
+        title: '1v1.Space',
+        description: '1v1SPACE, similar to 1v1.LOL, an entertaining battle royale browser game.',
+        image: '../files/1v1space/splash.png',
+        tags: ['puzzle', 'brain'],
+        rating: 4.8,
+        players: 1850,
+        src: '../files/1v1space/index.html',
+        difficulty: 4,
+        category: 'puzzle'
+    },
+    {
+        id: 'slope',
+        title: 'Slope',
+        description: 'Slopein Around Slope Yah Woo!',
+        image: '../files/slope/slope4.jpeg',
+        tags: ['racing', 'arcade'],
+        rating: 4.3,
+        players: 3420,
+        src: '../files/slope/',
+        difficulty: 3,
+        category: 'arcade'
+    }
     }
 }
 
