@@ -1,34 +1,5 @@
 // Projects Page JavaScript
 
-// Fallback GameUtils implementation
-const GameUtils = {
-    generateStars(rating) {
-        const fullStars = Math.floor(rating);
-        const halfStar = rating % 1 >= 0.5 ? 1 : 0;
-        let stars = '';
-        for (let i = 0; i < fullStars; i++) {
-            stars += '<i class="fas fa-star"></i>';
-        }
-        if (halfStar) {
-            stars += '<i class="fas fa-star-half-alt"></i>';
-        }
-        for (let i = fullStars + halfStar; i < 5; i++) {
-            stars += '<i class="far fa-star"></i>';
-        }
-        return stars;
-    },
-    formatPlayerCount(count) {
-        if (count >= 1000) {
-            return `${(count / 1000).toFixed(1)}K`;
-        }
-        return count.toString();
-    },
-    playGame(game) {
-        // Basic implementation: redirect to game URL
-        window.location.href = game.src;
-    }
-};
-
 const gameData = [
     {
         id: '2048',
@@ -77,17 +48,17 @@ class ProjectsManager {
         this.displayedGames = 0;
         this.gamesPerLoad = 6;
         this.favorites = this.loadFavorites();
-        
-        this.init();
     }
 
     init() {
+        console.log('Initializing ProjectsManager...');
         this.setupEventListeners();
         this.loadInitialGames();
         this.updateLoadMoreButton();
     }
 
     setupEventListeners() {
+        console.log('Setting up event listeners...');
         const searchInput = document.getElementById('searchInput');
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
@@ -102,24 +73,31 @@ class ProjectsManager {
                     this.filterGames();
                 }
             });
+        } else {
+            console.warn('Search input element not found');
         }
 
         const filterButtons = document.querySelectorAll('.filter-btn');
-        filterButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                filterButtons.forEach(b => b.classList.remove('active'));
-                e.target.classList.add('active');
-                
-                this.currentFilter = e.target.getAttribute('data-filter');
-                this.filterGames();
+        if (filterButtons.length > 0) {
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    this.currentFilter = e.target.getAttribute('data-filter');
+                    this.filterGames();
+                });
             });
-        });
+        } else {
+            console.warn('No filter buttons found');
+        }
 
         const loadMoreBtn = document.getElementById('loadMoreBtn');
         if (loadMoreBtn) {
             loadMoreBtn.addEventListener('click', () => {
                 this.loadMoreGames();
             });
+        } else {
+            console.warn('Load more button not found');
         }
 
         document.addEventListener('keydown', (e) => {
@@ -132,6 +110,7 @@ class ProjectsManager {
 
     filterGames() {
         try {
+            console.log(`Filtering games with filter: ${this.currentFilter}, search: ${this.searchTerm}`);
             this.filteredGames = this.allGames.filter(game => {
                 const matchesFilter = this.currentFilter === 'all' || 
                                     game.tags.includes(this.currentFilter) ||
@@ -140,10 +119,10 @@ class ProjectsManager {
                                     game.title.toLowerCase().includes(this.searchTerm) ||
                                     game.description.toLowerCase().includes(this.searchTerm) ||
                                     game.tags.some(tag => tag.toLowerCase().includes(this.searchTerm));
-                
                 return matchesFilter && matchesSearch;
             });
 
+            console.log(`Filtered games count: ${this.filteredGames.length}`);
             this.displayedGames = 0;
             this.clearGamesGrid();
             this.loadInitialGames();
@@ -159,6 +138,7 @@ class ProjectsManager {
 
     loadInitialGames() {
         try {
+            console.log('Loading initial games...');
             this.loadMoreGames();
         } catch (error) {
             console.error('Error loading initial games:', error);
@@ -167,11 +147,13 @@ class ProjectsManager {
 
     loadMoreGames() {
         try {
+            console.log(`Loading more games. Displayed: ${this.displayedGames}, Total: ${this.filteredGames.length}`);
             const gamesToLoad = this.filteredGames.slice(
                 this.displayedGames, 
                 this.displayedGames + this.gamesPerLoad
             );
 
+            console.log(`Games to load: ${gamesToLoad.length}`);
             gamesToLoad.forEach((game, index) => {
                 setTimeout(() => {
                     this.createGameCard(game);
@@ -193,6 +175,7 @@ class ProjectsManager {
                 return;
             }
 
+            console.log(`Creating card for game: ${game.title}`);
             const card = document.createElement('div');
             card.className = 'project-card';
             card.setAttribute('data-game-id', game.id);
@@ -238,6 +221,7 @@ class ProjectsManager {
 
             card.addEventListener('click', (e) => {
                 if (!e.target.closest('.favorite-btn')) {
+                    console.log(`Playing game: ${game.title}`);
                     this.playGame(game);
                 }
             });
@@ -245,20 +229,23 @@ class ProjectsManager {
             const favoriteBtn = card.querySelector('.favorite-btn');
             favoriteBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
+                console.log(`Toggling favorite for game: ${game.id}`);
                 this.toggleFavorite(game.id, favoriteBtn);
             });
 
             card.addEventListener('mouseenter', () => {
+                console.log(`Preloading game: ${game.title}`);
                 this.preloadGame(game);
             });
 
             grid.appendChild(card);
+            console.log(`Appended card for ${game.title} to grid`);
 
             setTimeout(() => {
                 card.classList.add('fade-in-up');
             }, 50);
         } catch (error) {
-            console.error('Error creating game card:', error);
+            console.error(`Error creating game card for ${game.title}:`, error);
         }
     }
 
@@ -346,6 +333,8 @@ class ProjectsManager {
                 setTimeout(() => {
                     GameUtils.playGame(game);
                 }, 150);
+            } else {
+                console.warn(`Card not found for game: ${game.id}`);
             }
         } catch (error) {
             console.error('Error playing game:', error);
@@ -369,6 +358,9 @@ class ProjectsManager {
             const grid = document.getElementById('projectsGrid');
             if (grid) {
                 grid.innerHTML = '';
+                console.log('Cleared projects grid');
+            } else {
+                console.warn('Projects grid not found for clearing');
             }
         } catch (error) {
             console.error('Error clearing games grid:', error);
@@ -389,6 +381,8 @@ class ProjectsManager {
                         Load ${Math.min(remainingGames, this.gamesPerLoad)} More Games
                     `;
                 }
+            } else {
+                console.warn('Load more button not found');
             }
         } catch (error) {
             console.error('Error updating load more button:', error);
@@ -406,6 +400,9 @@ class ProjectsManager {
                         <p>Try adjusting your search terms or filters</p>
                     </div>
                 `;
+                console.log('Displayed empty state');
+            } else {
+                console.warn('Projects grid not found for empty state');
             }
         } catch (error) {
             console.error('Error showing empty state:', error);
@@ -446,6 +443,7 @@ class ProjectsManager {
 
 document.addEventListener('DOMContentLoaded', function() {
     try {
+        console.log('DOM content loaded, initializing ProjectsManager');
         window.projectsManager = new ProjectsManager();
     } catch (error) {
         console.error('Error initializing ProjectsManager:', error);
