@@ -153,7 +153,7 @@ const GameUtils = {
             src: gameData.src,
             title: gameData.title
         });
-        window.location.href = `focus.html?${params.toString()}`;
+        window.location.href = `./focus?${params.toString()}`;
     },
 
     // Format player count
