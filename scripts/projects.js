@@ -34,6 +34,18 @@ const gameData = [
         src: '../files/slope/',
         difficulty: 3,
         category: 'arcade'
+    },
+    {
+        id: 'granny',
+        title: 'granny',
+        description: 'granny is so fun dude',
+        image: '../files/slope/slope4.jpeg',
+        tags: ['racing', 'arcade'],
+        rating: 4.3,
+        players: 3420,
+        src: '../files/granny/',
+        difficulty: 3,
+        category: 'arcade'
     }
 ];
 
