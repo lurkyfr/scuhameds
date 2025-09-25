@@ -70,7 +70,20 @@ const gameData = [
         src: '../files/some/',
         difficulty: 3,
         category: 'arcade'
+    },
+        {
+        id: 'holeio',
+        title: 'Hole.io',
+        description: 'Swallow objects and grow your hole to win!',
+        image: '../files/helixjump/helixjump.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/holeio/',
+        difficulty: 1,
+        category: 'arcade'
     }
+    
 ];
 
 class ProjectsManager {
