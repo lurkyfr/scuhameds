@@ -62,24 +62,60 @@ const gameData = [
     {
         id: 'idkyet',
         title: 'Testing game',
-        description: 'Smash through the floors and get the highest score',
-        image: '../files/helixjump/helixjump.png',
+        description: 'Unknown or nil game description.',
+        image: '../files/hitbox/hitbox.png',
         tags: ['racing', 'arcade'],
         rating: 4.5,
         players: `nil`,
-        src: '../files/some/',
+        src: '../files/hitbox/',
         difficulty: 3,
         category: 'arcade'
     },
-        {
+    {
         id: 'holeio',
         title: 'Hole.io',
         description: 'Swallow objects and grow your hole to win!',
-        image: '../files/helixjump/helixjump.png',
+        image: '../files/holeio/holeio.png',
         tags: ['racing', 'arcade'],
         rating: 4.5,
         players: `nil`,
         src: '../files/holeio/',
+        difficulty: 1,
+        category: 'arcade'
+    },
+    {
+        id: 'eaglerv112',
+        title: 'Eaglercraft v1.11.2',
+        description: 'Minecraft Client v1.11.2',
+        image: '../files/holeio/holeio.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/eaglercraft/v112.html',
+        difficulty: 1,
+        category: 'arcade'
+    },
+    {
+        id: 'eaglerv19',
+        title: 'Eaglercraft v1.9',
+        description: 'Minecraft Client v1.9',
+        image: '../files/holeio/holeio.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/eaglercraft/v19.html',
+        difficulty: 1,
+        category: 'arcade'
+    },
+    {
+        id: 'justfall',
+        title: 'JustFall.LOL',
+        description: 'Similar gameplay theme to Fall Guys & Stumble Guys',
+        image: ',./files/holeio/holeio.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/justfall',
         difficulty: 1,
         category: 'arcade'
     }
