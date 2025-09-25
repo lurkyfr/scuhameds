@@ -37,12 +37,24 @@ const gameData = [
     },
     {
         id: 'granny',
-        title: 'granny',
+        title: 'Granny',
         description: 'granny is so fun dude',
-        image: '../files/slope/slope4.jpeg',
+        image: '../files/granny/logo.png',
         tags: ['racing', 'arcade'],
         rating: 4.3,
         players: 3420,
+        src: '../files/granny/',
+        difficulty: 3,
+        category: 'arcade'
+    },
+    {
+        id: 'helixjump',
+        title: 'Helix Jump',
+        description: 'Smash through the floors and get the highest score',
+        image: '../files/granny/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
         src: '../files/granny/',
         difficulty: 3,
         category: 'arcade'
