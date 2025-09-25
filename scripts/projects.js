@@ -58,6 +58,18 @@ const gameData = [
         src: '../files/granny/',
         difficulty: 3,
         category: 'arcade'
+    },
+    {
+        id: 'idkyet',
+        title: 'Testing game',
+        description: 'Smash through the floors and get the highest score',
+        image: '../files/helixjump/helixjump.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/some/',
+        difficulty: 3,
+        category: 'arcade'
     }
 ];
 
