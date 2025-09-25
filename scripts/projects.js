@@ -118,6 +118,66 @@ const gameData = [
         src: '../files/justfall',
         difficulty: 1,
         category: 'arcade'
+    },
+    {
+        id: 'fnaf1',
+        title: "Five Nights at Freddy's",
+        description: 'Survival: FNAF',
+        image: ',./files/fnaf1/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/fnaf1',
+        difficulty: 1,
+        category: 'arcade'
+    },
+    {
+        id: 'fnaf2',
+        title: "Five Nights at Freddy's 2",
+        description: 'Survival: FNAF',
+        image: ',./files/fnaf2/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/fnaf2',
+        difficulty: 1,
+        category: 'arcade'
+    },
+    {
+        id: 'fnaf3',
+        title: "Five Nights at Freddy's 3",
+        description: 'Survival: FNAF',
+        image: ',./files/fnaf3/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/fnaf3',
+        difficulty: 1,
+        category: 'arcade'
+    },
+    {
+        id: 'fnaf4',
+        title: "Five Nights at Freddy's 4",
+        description: 'Survival: FNAF',
+        image: ',./files/fnaf4/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/fnaf4',
+        difficulty: 1,
+        category: 'arcade'
+    },
+    {
+        id: 'fnafsl',
+        title: "Five Nights at Freddy's: Sister Location",
+        description: 'Survival: FNAF',
+        image: ',./files/fnafsl/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/fnafsl',
+        difficulty: 1,
+        category: 'arcade'
     }
     
 ];
