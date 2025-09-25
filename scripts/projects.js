@@ -51,7 +51,7 @@ const gameData = [
         id: 'helixjump',
         title: 'Helix Jump',
         description: 'Smash through the floors and get the highest score',
-        image: '../files/granny/logo.png',
+        image: '../files/helixjump/helixjump.png',
         tags: ['racing', 'arcade'],
         rating: 4.5,
         players: `nil`,
