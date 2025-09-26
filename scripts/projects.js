@@ -55,7 +55,7 @@ const gameData = [
         tags: ['racing', 'arcade'],
         rating: 4.5,
         players: `nil`,
-        src: '../files/granny/',
+        src: '../files/helixjump/',
         difficulty: 3,
         category: 'arcade'
     },
