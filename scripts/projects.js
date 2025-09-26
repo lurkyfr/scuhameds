@@ -178,6 +178,18 @@ const gameData = [
         src: '../files/fnafsl',
         difficulty: 4,
         category: 'arcade'
+    },
+    {
+        id: 'webfishing',
+        title: "Web Fishing",
+        description: 'Unknown',
+        image: '../files/fnafsl/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/fnafsl',
+        difficulty: 4,
+        category: 'arcade'
     }
     
 ];
