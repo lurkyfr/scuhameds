@@ -124,36 +124,36 @@ const gameData = [
         title: "Five Nights at Freddy's",
         description: 'Survival: FNAF',
         image: '../files/fnaf/logo.png',
-        tags: ['racing', 'arcade'],
-        rating: 4.5,
+        tags: ['horror', 'arcade'],
+        rating: 4.7,
         players: `nil`,
         src: '../files/fnaf',
-        difficulty: 3,
-        category: 'arcade'
+        difficulty: 5,
+        category: 'horror'
     },
     {
         id: 'fnaf2',
         title: "Five Nights at Freddy's 2",
         description: 'Survival: FNAF',
         image: '../files/fnaf2/logo.png',
-        tags: ['racing', 'arcade'],
-        rating: 4.5,
+        tags: ['horror', 'arcade'],
+        rating: 4,
         players: `nil`,
         src: '../files/fnaf2',
-        difficulty: 3,
-        category: 'arcade'
+        difficulty: 5,
+        category: 'horror'
     },
     {
         id: 'fnaf3',
         title: "Five Nights at Freddy's 3",
         description: 'Survival: FNAF',
         image: '../files/fnaf3/logo.png',
-        tags: ['racing', 'arcade'],
-        rating: 4.5,
+        tags: ['horror', 'arcade'],
+        rating: 4,
         players: `nil`,
         src: '../files/fnaf3',
         difficulty: 5,
-        category: 'arcade'
+        category: 'horrror'
     },
     {
         id: 'fnaf4',
@@ -161,10 +161,10 @@ const gameData = [
         description: 'Survival: FNAF',
         image: '../files/fnaf4/logo.png',
         tags: ['racing', 'arcade'],
-        rating: 4.5,
+        rating: 4.3,
         players: `nil`,
         src: '../files/fnaf4',
-        difficulty: 4,
+        difficulty: 5,
         category: 'arcade'
     },
     {
@@ -173,10 +173,10 @@ const gameData = [
         description: 'Survival: FNAF',
         image: '../files/fnafsl/logo.png',
         tags: ['racing', 'arcade'],
-        rating: 4.5,
+        rating: 4.6,
         players: `nil`,
         src: '../files/fnafsl',
-        difficulty: 4,
+        difficulty: 5,
         category: 'arcade'
     },
     {
@@ -185,10 +185,10 @@ const gameData = [
         description: 'Unknown',
         image: '../files/fnafsl/logo.png',
         tags: ['racing', 'arcade'],
-        rating: 4.5,
+        rating: 4.4,
         players: `nil`,
         src: '../files/fnafsl',
-        difficulty: 4,
+        difficulty: 2,
         category: 'arcade'
     },
     {
@@ -197,10 +197,10 @@ const gameData = [
         description: 'Unknown',
         image: '../files/badparenting/logo.png',
         tags: ['racing', 'arcade'],
-        rating: 4.5,
+        rating: 4.7,
         players: `nil`,
         src: '../files/badparenting',
-        difficulty: 4,
+        difficulty: 3,
         category: 'arcade'
     },
     {
@@ -209,7 +209,7 @@ const gameData = [
         description: 'Unknown',
         image: '../files/extremerun3d/logo.png',
         tags: ['racing', 'arcade'],
-        rating: 4.5,
+        rating: 3.5,
         players: `nil`,
         src: '../files/extremerun3d',
         difficulty: 4,
@@ -221,10 +221,10 @@ const gameData = [
         description: 'Unknown',
         image: '../files/geometrydashlite/logo.png',
         tags: ['racing', 'arcade'],
-        rating: 4.5,
+        rating: 3.5,
         players: `nil`,
         src: '../files/geometrydashlite',
-        difficulty: 4,
+        difficulty: 3,
         category: 'arcade'
     },
     {
@@ -233,10 +233,10 @@ const gameData = [
         description: 'Unknown',
         image: '../files/aquaparkio/logo.png',
         tags: ['racing', 'arcade'],
-        rating: 4.5,
+        rating: 4.2,
         players: `nil`,
         src: '../files/aquaparkio',
-        difficulty: 4,
+        difficulty: 2,
         category: 'arcade'
     },
     {
@@ -245,10 +245,10 @@ const gameData = [
         description: 'Unknown',
         image: '../files/basketballstars/logo.png',
         tags: ['racing', 'arcade'],
-        rating: 4.5,
+        rating: 4.8,
         players: `nil`,
         src: '../files/basketballstars',
-        difficulty: 4,
+        difficulty: 3,
         category: 'arcade'
     },
     {
@@ -257,7 +257,7 @@ const gameData = [
         description: 'Unknown',
         image: '../files/slitherio/logo.png',
         tags: ['racing', 'arcade'],
-        rating: 4.5,
+        rating: 3.4,
         players: `nil`,
         src: '../files/slitherio',
         difficulty: 4,
@@ -269,7 +269,7 @@ const gameData = [
         description: 'Unknown',
         image: '../files/retrobowl/logo.png',
         tags: ['racing', 'arcade'],
-        rating: 4.5,
+        rating: 4.4,
         players: `nil`,
         src: '../files/retrobowl',
         difficulty: 4,
@@ -284,7 +284,7 @@ const gameData = [
         rating: 4.5,
         players: `nil`,
         src: '../files/papasfreezeria',
-        difficulty: 4,
+        difficulty: 3,
         category: 'arcade'
     },
     {
@@ -293,10 +293,10 @@ const gameData = [
         description: 'Unknown',
         image: '../files/papaswingeria/logo.png',
         tags: ['racing', 'arcade'],
-        rating: 4.5,
+        rating: 4.6,
         players: `nil`,
         src: '../files/papaswingeria',
-        difficulty: 4,
+        difficulty: 3,
         category: 'arcade'
     },
     {
@@ -305,10 +305,10 @@ const gameData = [
         description: 'Unknown',
         image: '../files/guesstheiranswer/logo.png',
         tags: ['racing', 'arcade'],
-        rating: 4.5,
+        rating: 2.2,
         players: `nil`,
         src: '../files/guesstheiranswer',
-        difficulty: 4,
+        difficulty: 2,
         category: 'arcade'
     },
     {
@@ -317,7 +317,7 @@ const gameData = [
         description: 'Unknown',
         image: '../files/happywheels/logo.png',
         tags: ['racing', 'arcade'],
-        rating: 4.5,
+        rating: 4.8,
         players: `nil`,
         src: '../files/happywheels',
         difficulty: 4,
