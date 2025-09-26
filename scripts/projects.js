@@ -250,7 +250,140 @@ const gameData = [
         src: '../files/basketballstars',
         difficulty: 4,
         category: 'arcade'
-    }
+    },
+    {
+        id: 'slitherio',
+        title: "Slither.IO",
+        description: 'Unknown',
+        image: '../files/slitherio/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/slitherio',
+        difficulty: 4,
+        category: 'arcade'
+    },
+    {
+        id: 'retrobowl',
+        title: "Retro Bowl",
+        description: 'Unknown',
+        image: '../files/retrobowl/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/retrobowl',
+        difficulty: 4,
+        category: 'arcade'
+    },
+    {
+        id: 'papasfreezeria',
+        title: "Papa's Freezeria",
+        description: 'Unknown',
+        image: '../files/papasfreezeria/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/papasfreezeria',
+        difficulty: 4,
+        category: 'arcade'
+    },
+    {
+        id: 'papaswingeria',
+        title: "Papa's Wingeria",
+        description: 'Unknown',
+        image: '../files/papaswingeria/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/papaswingeria',
+        difficulty: 4,
+        category: 'arcade'
+    },
+    {
+        id: 'guesstheanswer',
+        title: "Guess the answer",
+        description: 'Unknown',
+        image: '../files/guesstheiranswer/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/guesstheiranswer',
+        difficulty: 4,
+        category: 'arcade'
+    },
+    {
+        id: 'happywheels',
+        title: "Happy Wheels",
+        description: 'Unknown',
+        image: '../files/happywheels/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/happywheels',
+        difficulty: 4,
+        category: 'arcade'
+    },
+    {
+        id: 'lbobby',
+        title: "Lucky Block Obby",
+        description: 'Unknown',
+        image: '../files/lbobby/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/lbobby',
+        difficulty: 4,
+        category: 'arcade'
+    },
+    {
+        id: 'skibiditoiletio',
+        title: "SkibidiToilet.IO",
+        description: 'Unknown',
+        image: '../files/skibiditoiletio/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/skibiditoiletio',
+        difficulty: 4,
+        category: 'arcade'
+    },
+    {
+        id: 'doomzio',
+        title: "Doomz.IO",
+        description: 'Unknown',
+        image: '../files/doomzio/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/doomzio',
+        difficulty: 4,
+        category: 'arcade'
+    },
+    {
+        id: 'lbobby',
+        title: "Lucky Block Obby",
+        description: 'Unknown',
+        image: '../files/lbobby/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/lbobby',
+        difficulty: 4,
+        category: 'arcade'
+    },
+    {
+        id: 'snowballio',
+        title: "SnowBall.IO",
+        description: 'Unknown',
+        image: '../files/snowballio/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/snowballio',
+        difficulty: 4,
+        category: 'arcade'
+    },
+    
     
 ];
 
