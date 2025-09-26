@@ -190,6 +190,66 @@ const gameData = [
         src: '../files/fnafsl',
         difficulty: 4,
         category: 'arcade'
+    },
+    {
+        id: 'badparenting',
+        title: "Bad Parenting",
+        description: 'Unknown',
+        image: '../files/badparenting/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/badparenting',
+        difficulty: 4,
+        category: 'arcade'
+    },
+    {
+        id: 'extrmerun',
+        title: "Extreme Run 3d",
+        description: 'Unknown',
+        image: '../files/extremerun3d/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/extremerun3d',
+        difficulty: 4,
+        category: 'arcade'
+    },
+    {
+        id: 'geometrydash',
+        title: "Geometry Dash Lite",
+        description: 'Unknown',
+        image: '../files/geometrydashlite/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/geometrydashlite',
+        difficulty: 4,
+        category: 'arcade'
+    },
+    {
+        id: 'aquapark',
+        title: "AquaPark.IO",
+        description: 'Unknown',
+        image: '../files/aquaparkio/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/aquaparkio',
+        difficulty: 4,
+        category: 'arcade'
+    },
+    {
+        id: 'basketballstars',
+        title: "Basketball Stars",
+        description: 'Unknown',
+        image: '../files/basketballstars/logo.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/basketballstars',
+        difficulty: 4,
+        category: 'arcade'
     }
     
 ];
