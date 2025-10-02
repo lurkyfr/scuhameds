@@ -394,6 +394,18 @@ const gameData = [
         src: '../files/tabs',
         difficulty: 4,
         category: 'arcade'
+    },
+    {
+        id: 'sandstone',
+        title: "Sandstone Proxy Test",
+        description: 'In testing stages, added as a project miscellaniously.',
+        image: '../files/sandstone/idk.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/sandstone',
+        difficulty: 4,
+        category: 'arcade'
     }
 ];
 
