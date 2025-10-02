@@ -383,8 +383,18 @@ const gameData = [
         difficulty: 4,
         category: 'arcade'
     },
-    
-    
+    {
+        id: 'tabs',
+        title: "Tabs",
+        description: 'Unknown',
+        image: '../files/tabs/idk.png',
+        tags: ['racing', 'arcade'],
+        rating: 4.5,
+        players: `nil`,
+        src: '../files/tabs',
+        difficulty: 4,
+        category: 'arcade'
+    }
 ];
 
 class ProjectsManager {
