@@ -329,7 +329,7 @@ class FocusManager {
         this.saveGameProgress();
 
         setTimeout(() => {
-            window.location.href = 'projects.html';
+            window.location.href = '../projects';
         }, 300);
     }
 
@@ -479,4 +479,4 @@ document.addEventListener('visibilitychange', function() {
 });
 
 // Export for use in other scripts
-window.FocusManager = FocusManager;
+window.FocusManager = FocusManager-
