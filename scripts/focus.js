@@ -479,4 +479,4 @@ document.addEventListener('visibilitychange', function() {
 });
 
 // Export for use in other scripts
-window.FocusManager = FocusManager-
+window.FocusManager = FocusManager
